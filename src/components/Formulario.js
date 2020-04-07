@@ -11,6 +11,9 @@ const Formulario = () => {
     sintomas: "",
   });
 
+  const [error, setError] = useState(false);
+
+  // const [error, actualizarError] = useState(false);
   // Función que se ejecuta al escribir en un input
 
   const actualizarState = (e) => {
@@ -26,10 +29,22 @@ const Formulario = () => {
 
   const submitCita = (e) => {
     e.preventDefault();
+    console.log("submitCita");
+    // Validar
+    if (
+      mascota.trim() === "" ||
+      propietario.trim() === "" ||
+      fecha.trim() === "" ||
+      hora.trim() === "" ||
+      sintomas.trim() === ""
+    ) {
+      setError(true);
+      return;
+    }
+    setError(false);
   };
 
-  // Validar
-
+  // Eliminar el mensaje previo
   // Asignar un ID
 
   // Crear la cita
@@ -39,6 +54,10 @@ const Formulario = () => {
   return (
     <Fragment>
       <h2>Crear cita</h2>
+
+      {error ? (
+        <p className="alerta-error">Obligatorio rellenar todos los campos</p>
+      ) : null}
       <form onSubmit={submitCita}>
         <label>Nombre Mascota</label>
         <input

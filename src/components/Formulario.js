@@ -21,10 +21,25 @@ const Formulario = () => {
 
   const { mascota, propietario, fecha, hora, sintomas } = cita;
 
+  // Cuando el usario presiona "agregar cita"
+  // Le pasamos e como parámetro y añadimos e.preventdefault para que no se envíe el formulario
+
+  const submitCita = (e) => {
+    e.preventDefault();
+  };
+
+  // Validar
+
+  // Asignar un ID
+
+  // Crear la cita
+
+  // Reiniciar el form
+
   return (
     <Fragment>
       <h2>Crear cita</h2>
-      <form>
+      <form onSubmit={submitCita}>
         <label>Nombre Mascota</label>
         <input
           type="text"
@@ -62,19 +77,18 @@ const Formulario = () => {
           onChange={actualizarState}
           value={hora}
         />
+        <label>Síntomas</label>
+        <textarea
+          className="u-full-width"
+          name="sintomas"
+          onChange={actualizarState}
+          value={sintomas}
+        ></textarea>
+
+        <button type="submit" className="u-full-width button-primary">
+          Agregar cita
+        </button>
       </form>
-
-      <label>Síntomas</label>
-      <textarea
-        className="u-full-width"
-        name="sintomas"
-        onChange={actualizarState}
-        value={sintomas}
-      ></textarea>
-
-      <button type="submit" className="u-full-width button-primary">
-        Agregar cita
-      </button>
     </Fragment>
   );
 };

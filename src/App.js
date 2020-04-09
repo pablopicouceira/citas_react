@@ -13,16 +13,9 @@ function App() {
   const [listado, setListado] = useState(citasIniciales);
 
   // Use Effect para realizar ciertas operaciones cuando el state cambia:
-
   useEffect(() => {
-    let citasIniciales = JSON.parse(localStorage.getItem("listado"));
-    if (citasIniciales) {
-      localStorage.setItem("listado", JSON.stringify(listado));
-    } else {
-      localStorage.setItem("listado", JSON.stringify([]));
-    }
+    localStorage.setItem("listado", JSON.stringify(listado));
   }, [listado]);
-
   // Función que agrega la nueva cita a las citas actuales
 
   const guardarCita = (cita) => {

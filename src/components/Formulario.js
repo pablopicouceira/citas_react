@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import uuid from "uuid/v4";
+import PropTypes from "prop-types";
 
 const Formulario = ({ guardarCita }) => {
   // Crear state de citas
@@ -46,7 +47,6 @@ const Formulario = ({ guardarCita }) => {
 
     // Asignar un ID
     cita.id = uuid();
-    console.log(cita);
     // Guardar la cita
 
     guardarCita(cita);
@@ -75,7 +75,7 @@ const Formulario = ({ guardarCita }) => {
           type="text"
           name="mascota"
           className="u-full-width"
-          placeHolder="Nombre mascota"
+          placeholder="Nombre mascota"
           onChange={actualizarState}
           value={mascota}
         />
@@ -85,7 +85,7 @@ const Formulario = ({ guardarCita }) => {
           type="text"
           name="propietario"
           className="u-full-width"
-          placeHolder="Nombre dueño"
+          placeholder="Nombre dueño"
           onChange={actualizarState}
           value={propietario}
         />
@@ -121,6 +121,10 @@ const Formulario = ({ guardarCita }) => {
       </form>
     </Fragment>
   );
+};
+
+Formulario.propTypes = {
+  crearCita: PropTypes.func.isRequired,
 };
 
 export default Formulario;
